@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import cv2
 import numpy as np
 
+#We only need road line, not whole image
 def region_of_interest(img, vertices):
     mask = np.zeros_like(img)
     #channel_count=img.shape[2]
@@ -11,7 +12,8 @@ def region_of_interest(img, vertices):
     masked_image = cv2.bitwise_and(img, mask)
     return masked_image
 
-def drow_the_lines(img, lines):
+
+def draw_the_lines(img, lines):
     img = np.copy(img)
     blank_image = np.zeros((img.shape[0], img.shape[1], 3), dtype=np.uint8)
 
@@ -43,6 +45,6 @@ lines = cv2.HoughLinesP(cropped_image,
                         lines=np.array([]),
                         minLineLength=40,
                         maxLineGap=25)
-image_with_lines = drow_the_lines(image, lines)
+image_with_lines = draw_the_lines(image, lines)
 plt.imshow(image_with_lines)
 plt.show()
