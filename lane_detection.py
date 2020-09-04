@@ -23,9 +23,11 @@ def draw_the_lines(img, lines):
     img=cv2.addWeighted(img, 0.8, blank_image, 1, 0.0)
     return img
 
+#read picture/OpenCV's type is BGR so we need to convert it to RGB.
 image=cv2.imread('road.jpg')
 image=cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
+#image.shape=(height,weight,channel_number)
 height=image.shape[0]
 width=image.shape[1]
 
